@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chatbot</title>
+    <link href="/dist/output.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+     <link rel="stylesheet" type="text/css" href="jquery.convform.css" >
+     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+      <script type="text/javascript" src="jquery.convform.js"></script>
+     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+    <style>
+        body {
+          background-image: url('unsplash.jpg');
+          background-size: cover;
+          background-position: center;
+          background-attachment: fixed;
+        }
+        body::after {
+             content: "";
+            background: rgba(0, 0, 0, 0.3); 
+             position: fixed;
+             top: 0;
+             left: 0;
+             width: 100%;
+             height: 100%;
+             z-index: -1; /* Place the overlay behind other elements */
+           }
+           .flex-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+}
+       .chatbox.active{
+                transform: scaleY(1);
+       }
+
+        .hiden{
+            display: none !important;
+        }
+        .conv-form-wrapper textarea{
+              height: 30px;
+              overflow: hidden;
+              resize: none;
+        }
+        #message{
+            padding: 20px;
+        }
+      </style>
+      <script>
+         $(document).ready(function(){
+            $('.chat-icon').click(function(event){
+                $('.chatbox').toggleClass('active');
+            });
+            $('.conv-form-wrapper').convform({selectInputStyle: 'disable'})
+             
+            
+         })
+         
+      </script>
+
+       <!--chatbot-->
+       <span class="chat-icon fixed right-[30px] bottom-8 font-bold text-6xl text-yellow-50 cursor-pointer z-50 hover:-translate-y-2 hover:duration-300">
+        <i class="fa-regular fa-comments"></i>
+       </span>
+       <div class="chatbox fixed right-[20px] bottom-[100px] w-[400px] h-[70vh] rounded-md a-50 bg-yellow-50 transition-all duration-300 ease-out transform scale-y-0">
+        <div id="chat" class="conv-form-wrapper">
+            <form action="" method="Get" class="hiden">
+                <select name="category" data-conv-question="hello?what do you do? ">
+                    <option value="webDevelopement">website dev</option>
+                    <option value="difitalMarkiting">difital Markiting</option>
+                </select>
+                <div data-conv-fork="category">
+                    <div data-conv-case="webDevelopement">
+                         <input type="text" name="domain_name" data-conv-question="please tell me your domain name" />
+                    </div>
+                    <div data-conv-case="difitalMarkiting">
+                        <input type="text"  name="company_name" data-conv-question="please tell me your company name" />
+                   </div>
+                   
+                </div>
+                <input type="text"  name="name" data-conv-question="please tell me your name" />
+                <input data-conv-question="Type in your e-mail" data-pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" id="email" type="email" name="email" required placeholder="What's your e-mail?">
+                <select name="category" data-conv-question="you confirm?">
+                    <option value="confirm">Confirm</option>
+                    <option value="not_yet">Not yet</option>
+                   
+                </select>
+                <select name="edit" data-conv-question="what do you want to edit?">
+                    <option value="email">email</option>
+                    <option value="name">name</option>
+                    <option value="company_name">company name</option>
+                   
+                </select>
+                <input type="text"  name="name" data-conv-question="enter the right one" />
+
+            </form>
+        </div>
+       </div>
+       <!--chatbot-->
+      
+      <section>
+          <header class="flex justify-between  bg-none p-4 w-full fixed top-0 left-0">
+                <div class="flex items-center gap-3 cursor-pointer">
+                    <span class="text-2xl flex items-center text-yellow-50"><ion-icon name="code-working-outline"></ion-icon></span>
+                    <h1 class="font-bold text-3xl text-yellow-50">ToMe</h1>
+                </div>
+                <ul class="lg:flex hidden text-lg font-medium text-yellow-50 text-center gap-8 items-center mx-auto">
+                       <li class="cursor-pointer">Home</li>
+                       <li class="cursor-pointer">Project</li>
+                       <li class="cursor-pointer">Features</li>
+                       <li class="cursor-pointer">About</li>
+                </ul>
+                <button class="text-yellow-50 bg-slate-600 px-8 py-3 rounded-md">
+                  Contact us
+                </button>
+          </header>
+          <div class="flex-container flex flex-col justify-center items-center mx-auto text-yellow-50 max-w-xl my-auto">
+            <h1 class="font-bold text-3xl mb-8">"Welcome to our profile! Explore and discover more about us."</h1>
+            <p class='font-medium text-lg mb-8 '>Greetings and a warm embrace to our profile! We are delighted to have you here, eager to share the essence of who we are and what we stand for</p>
+            <span class="text-3xl text-yellow-50 flex gap-8 mb-8 cursor-pointer">
+                <ion-icon name="logo-facebook"></ion-icon>
+                <ion-icon name="logo-instagram"></ion-icon>
+                <ion-icon name="logo-github"></ion-icon>
+
+            </span>
+            <button class="w-auto px-12 py-2 bg-slate-600 rounded-lg">Learm more</button>
+          </div>
+      </section>
+      
+    
+    
+</body>
+</html>
